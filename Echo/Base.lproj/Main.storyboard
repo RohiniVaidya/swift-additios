@@ -1,24 +1,175 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Status Check View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BLEStatusCheckViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="BLEStatusCheckViewController" customModule="Echo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icn_bluetooth (1)" translatesAutoresizingMaskIntoConstraints="NO" id="Gm9-Kh-YOe">
+                                <rect key="frame" x="103.5" y="104" width="207" height="134.5"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XUr-k3-7sf">
+                                <rect key="frame" x="83" y="298.5" width="248" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="7LQ-b1-DFu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AF3-dS-izA">
+                                <rect key="frame" x="41.5" y="346.5" width="331" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="0Bp-hi-Rh7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Et1-dT-bKq">
+                                <rect key="frame" x="41.5" y="786" width="331" height="44"/>
+                                <color key="backgroundColor" name="AppBlue"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="IHF-xy-ffS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="enableBLEAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="e9A-mN-GuU"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="AF3-dS-izA" firstAttribute="centerX" secondItem="XUr-k3-7sf" secondAttribute="centerX" id="B89-nO-NU6"/>
+                            <constraint firstItem="Gm9-Kh-YOe" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Boe-Eo-yTE"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Et1-dT-bKq" secondAttribute="bottom" constant="32" id="C9M-q9-GDO"/>
+                            <constraint firstItem="AF3-dS-izA" firstAttribute="top" secondItem="XUr-k3-7sf" secondAttribute="bottom" constant="8" id="CkC-zg-TqS"/>
+                            <constraint firstItem="Et1-dT-bKq" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Jth-fp-8rd"/>
+                            <constraint firstItem="Gm9-Kh-YOe" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.5" id="Juc-OC-cAV"/>
+                            <constraint firstItem="XUr-k3-7sf" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="NgZ-ZS-rRR"/>
+                            <constraint firstItem="Gm9-Kh-YOe" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="60" id="XG9-vI-uLB"/>
+                            <constraint firstItem="XUr-k3-7sf" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.6" id="eFr-TM-JHw"/>
+                            <constraint firstItem="Et1-dT-bKq" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.8" id="efX-UY-i9J"/>
+                            <constraint firstItem="Gm9-Kh-YOe" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.15" id="iGP-bo-nZc"/>
+                            <constraint firstItem="AF3-dS-izA" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.8" id="rg0-fw-qXu"/>
+                            <constraint firstItem="XUr-k3-7sf" firstAttribute="top" secondItem="Gm9-Kh-YOe" secondAttribute="bottom" constant="60" id="ydO-sM-fSX"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Kor-Ax-WF8"/>
+                    <connections>
+                        <outlet property="descriptionLabel" destination="AF3-dS-izA" id="Yv8-gk-RJB"/>
+                        <outlet property="enableBLEButton" destination="Et1-dT-bKq" id="6oH-mW-Unh"/>
+                        <outlet property="titleLabel" destination="XUr-k3-7sf" id="fpV-6A-fTg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1042.0289855072465" y="137.94642857142856"/>
+        </scene>
+        <!--Apple Watch Connect View Controller-->
+        <scene sceneID="NZS-Yg-tfr">
+            <objects>
+                <viewController storyboardIdentifier="AppleWatchConnectViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="MQC-04-YZC" customClass="AppleWatchConnectViewController" customModule="Echo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YFL-lf-iaR">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icn_applewatch" translatesAutoresizingMaskIntoConstraints="NO" id="MXT-R5-QEU">
+                                <rect key="frame" x="103.5" y="104" width="207" height="134.5"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mjQ-r2-car">
+                                <rect key="frame" x="103.5" y="298.5" width="207" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="WPS-TY-8w0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hPm-N2-Yx5">
+                                <rect key="frame" x="41.5" y="346.5" width="331" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="Ijy-Rc-Ut9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DNb-hd-mjW">
+                                <rect key="frame" x="41.5" y="786" width="331" height="44"/>
+                                <color key="backgroundColor" name="AppBlue"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="JYb-Nv-p70"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="helpButtonAction:" destination="MQC-04-YZC" eventType="touchUpInside" id="yPL-c7-01x"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="mjQ-r2-car" firstAttribute="centerX" secondItem="0Eb-Uu-9w7" secondAttribute="centerX" id="33e-5c-UwM"/>
+                            <constraint firstItem="MXT-R5-QEU" firstAttribute="top" secondItem="0Eb-Uu-9w7" secondAttribute="top" constant="60" id="4Mx-gT-Jyz"/>
+                            <constraint firstItem="hPm-N2-Yx5" firstAttribute="top" secondItem="mjQ-r2-car" secondAttribute="bottom" constant="8" id="6Dg-MJ-tK7"/>
+                            <constraint firstItem="MXT-R5-QEU" firstAttribute="width" secondItem="YFL-lf-iaR" secondAttribute="width" multiplier="0.5" id="Cln-LX-WjJ"/>
+                            <constraint firstItem="DNb-hd-mjW" firstAttribute="centerX" secondItem="0Eb-Uu-9w7" secondAttribute="centerX" id="E4D-IL-a7U"/>
+                            <constraint firstItem="hPm-N2-Yx5" firstAttribute="width" secondItem="YFL-lf-iaR" secondAttribute="width" multiplier="0.8" id="JyU-Rk-wGK"/>
+                            <constraint firstItem="mjQ-r2-car" firstAttribute="width" secondItem="YFL-lf-iaR" secondAttribute="width" multiplier="0.5" id="ND3-jc-kIk"/>
+                            <constraint firstItem="hPm-N2-Yx5" firstAttribute="centerX" secondItem="0Eb-Uu-9w7" secondAttribute="centerX" id="Uyo-2b-52W"/>
+                            <constraint firstItem="0Eb-Uu-9w7" firstAttribute="bottom" secondItem="DNb-hd-mjW" secondAttribute="bottom" constant="32" id="VTq-E1-bHL"/>
+                            <constraint firstItem="mjQ-r2-car" firstAttribute="top" secondItem="MXT-R5-QEU" secondAttribute="bottom" constant="60" id="YE2-0Y-MT2"/>
+                            <constraint firstItem="MXT-R5-QEU" firstAttribute="height" secondItem="YFL-lf-iaR" secondAttribute="height" multiplier="0.15" id="eJz-Bh-PJI"/>
+                            <constraint firstItem="mjQ-r2-car" firstAttribute="centerX" secondItem="MXT-R5-QEU" secondAttribute="centerX" id="gjH-V8-Dz6"/>
+                            <constraint firstItem="DNb-hd-mjW" firstAttribute="width" secondItem="YFL-lf-iaR" secondAttribute="width" multiplier="0.8" id="lCZ-kJ-3bD"/>
+                            <constraint firstItem="MXT-R5-QEU" firstAttribute="centerX" secondItem="0Eb-Uu-9w7" secondAttribute="centerX" id="paA-o0-ECo"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="0Eb-Uu-9w7"/>
+                    </view>
+                    <connections>
+                        <outlet property="descriptionlabel" destination="hPm-N2-Yx5" id="mqh-Fr-CQo"/>
+                        <outlet property="helpButton" destination="DNb-hd-mjW" id="uN0-is-4mI"/>
+                        <outlet property="titleLabel" destination="mjQ-r2-car" id="AJV-xO-R8U"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zlp-xI-eSb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1984" y="138"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icn_applewatch" width="512" height="512"/>
+        <image name="icn_bluetooth (1)" width="512" height="512"/>
+        <namedColor name="AppBlue">
+            <color red="0.066666666666666666" green="0.45882352941176469" blue="0.85490196078431369" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>
