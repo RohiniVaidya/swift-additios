@@ -7,11 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		088FBCB52415FB1E00291ED8 /* WatchSessionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088FBCB42415FB1E00291ED8 /* WatchSessionHandler.swift */; };
+		088FBCB72416043200291ED8 /* TroubleshootingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088FBCB62416043200291ED8 /* TroubleshootingViewController.swift */; };
+		088FBCB924160A6900291ED8 /* EnableHealthPermissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088FBCB824160A6900291ED8 /* EnableHealthPermissionsViewController.swift */; };
+		088FBCBB24161A8D00291ED8 /* FinalConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088FBCBA24161A8D00291ED8 /* FinalConnectionViewController.swift */; };
 		08C17BED24123277008A6F72 /* BLEStatusCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C17BEC24123277008A6F72 /* BLEStatusCheckViewController.swift */; };
 		08F4162424121CE800F591D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F4162324121CE800F591D6 /* AppDelegate.swift */; };
 		08F4162624121CE800F591D6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F4162524121CE800F591D6 /* SceneDelegate.swift */; };
 		08F4162B24121CE800F591D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08F4162924121CE800F591D6 /* Main.storyboard */; };
-		08F4162E24121CE800F591D6 /* Echo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 08F4162C24121CE800F591D6 /* Echo.xcdatamodeld */; };
 		08F4163024121CE900F591D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08F4162F24121CE900F591D6 /* Assets.xcassets */; };
 		08F4163324121CE900F591D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08F4163124121CE900F591D6 /* LaunchScreen.storyboard */; };
 		08F4163E24121CE900F591D6 /* EchoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F4163D24121CE900F591D6 /* EchoTests.swift */; };
@@ -42,12 +45,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		088FBCB42415FB1E00291ED8 /* WatchSessionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSessionHandler.swift; sourceTree = "<group>"; };
+		088FBCB62416043200291ED8 /* TroubleshootingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TroubleshootingViewController.swift; sourceTree = "<group>"; };
+		088FBCB824160A6900291ED8 /* EnableHealthPermissionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnableHealthPermissionsViewController.swift; sourceTree = "<group>"; };
+		088FBCBA24161A8D00291ED8 /* FinalConnectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalConnectionViewController.swift; sourceTree = "<group>"; };
 		08C17BEC24123277008A6F72 /* BLEStatusCheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEStatusCheckViewController.swift; sourceTree = "<group>"; };
 		08F4162024121CE800F591D6 /* Echo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Echo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		08F4162324121CE800F591D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		08F4162524121CE800F591D6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		08F4162A24121CE800F591D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		08F4162D24121CE800F591D6 /* Echo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Echo.xcdatamodel; sourceTree = "<group>"; };
 		08F4162F24121CE900F591D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		08F4163224121CE900F591D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		08F4163424121CE900F591D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -121,7 +127,6 @@
 				08F4162F24121CE900F591D6 /* Assets.xcassets */,
 				08F4163124121CE900F591D6 /* LaunchScreen.storyboard */,
 				08F4163424121CE900F591D6 /* Info.plist */,
-				08F4162C24121CE800F591D6 /* Echo.xcdatamodeld */,
 			);
 			path = Echo;
 			sourceTree = "<group>";
@@ -149,6 +154,7 @@
 			children = (
 				08F4165A241229B200F591D6 /* BluetoothManager.swift */,
 				08F51E3B24125B47005B067C /* Extensions.swift */,
+				088FBCB42415FB1E00291ED8 /* WatchSessionHandler.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -158,6 +164,9 @@
 			children = (
 				08C17BEC24123277008A6F72 /* BLEStatusCheckViewController.swift */,
 				08F51DEF24124AE4005B067C /* AppleWatchConnectViewController.swift */,
+				088FBCB62416043200291ED8 /* TroubleshootingViewController.swift */,
+				088FBCB824160A6900291ED8 /* EnableHealthPermissionsViewController.swift */,
+				088FBCBA24161A8D00291ED8 /* FinalConnectionViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -313,15 +322,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				08F51DF024124AE4005B067C /* AppleWatchConnectViewController.swift in Sources */,
-				08F4162E24121CE800F591D6 /* Echo.xcdatamodeld in Sources */,
+				088FBCB52415FB1E00291ED8 /* WatchSessionHandler.swift in Sources */,
 				08F4162424121CE800F591D6 /* AppDelegate.swift in Sources */,
 				08C17BED24123277008A6F72 /* BLEStatusCheckViewController.swift in Sources */,
 				08F4162624121CE800F591D6 /* SceneDelegate.swift in Sources */,
 				08F51E3C24125B47005B067C /* Extensions.swift in Sources */,
 				08F4165B241229B200F591D6 /* BluetoothManager.swift in Sources */,
 				08F51E3524125277005B067C /* Coordinator.swift in Sources */,
+				088FBCB72416043200291ED8 /* TroubleshootingViewController.swift in Sources */,
+				088FBCB924160A6900291ED8 /* EnableHealthPermissionsViewController.swift in Sources */,
 				08F51E39241252D0005B067C /* MainCoordinator.swift in Sources */,
 				08F51E37241252A8005B067C /* Storyboarded.swift in Sources */,
+				088FBCBB24161A8D00291ED8 /* FinalConnectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -652,19 +664,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		08F4162C24121CE800F591D6 /* Echo.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				08F4162D24121CE800F591D6 /* Echo.xcdatamodel */,
-			);
-			currentVersion = 08F4162D24121CE800F591D6 /* Echo.xcdatamodel */;
-			path = Echo.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 08F4161824121CE800F591D6 /* Project object */;
 }

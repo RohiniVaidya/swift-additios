@@ -11,6 +11,11 @@ import CoreBluetooth
 
 let advertisedDeviceName = "\"ECHO: \(UIDevice.current.name)\""
 
+
+protocol BluetoothManagerDelegate: class {
+    func fetchHeartRate(hearRate: UInt8)
+}
+
 class BluetoothManager: NSObject, CBPeripheralManagerDelegate
 {
     
@@ -22,6 +27,13 @@ class BluetoothManager: NSObject, CBPeripheralManagerDelegate
     fileprivate let heartRateServiceUUID = CBUUID(string: "0x180D")
     fileprivate let heartRateSensorLocationCharacteristicUUID = CBUUID(string: "0x2A38")
     
+    fileprivate var heartRate: UInt8 = 0
+    var timer: Timer?
+    var heartRateCharacteristic: CBMutableCharacteristic!
+    var heartRateService: CBMutableService!
+    
+    
+    weak var delegate: BluetoothManagerDelegate?
     override init() {
         super.init()
     }
@@ -34,16 +46,43 @@ class BluetoothManager: NSObject, CBPeripheralManagerDelegate
     
     func addHeartRateService()
     {
-        let hearRateCharacteristic = CBMutableCharacteristic(type: heartRateCharacteristicUUID, properties: [.notify, .read, .write], value: nil, permissions: [.readable, .writeable])
-        let heartRateService = CBMutableService(type: heartRateServiceUUID, primary: true)
+        self.heartRateCharacteristic = CBMutableCharacteristic(type: heartRateCharacteristicUUID, properties: [.notify, .read, .write], value: nil, permissions: [.readable, .writeable])
+        self.heartRateService = CBMutableService(type: heartRateServiceUUID, primary: true)
         var sensorLocation = 2
         let heartRateSensorLocationCharacteristic = CBMutableCharacteristic(type: heartRateSensorLocationCharacteristicUUID, properties: .read,
                                                                             value: Data(bytes: &sensorLocation, count: MemoryLayout.size(ofValue: sensorLocation)), permissions: .readable)
         
-        heartRateService.characteristics = [hearRateCharacteristic, heartRateSensorLocationCharacteristic]
+        heartRateService.characteristics = [heartRateCharacteristic, heartRateSensorLocationCharacteristic]
         peripheralManager.add(heartRateService)
     }
     
+    
+    func startHeartRateSensor() {
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
+            guard let weakSelf = self else {
+                return
+            }
+            
+            var heartRate = UInt8(arc4random_uniform(60) + 60) // 60bpm ~ 120bpm
+            
+            weakSelf.delegate?.fetchHeartRate(hearRate: heartRate)
+            var heartRateData = Data()
+            heartRateData.append(0)
+            
+            heartRateData.append(Data(bytes: &heartRate,
+                                      count: MemoryLayout.size(ofValue: heartRate)))
+            
+            _ = weakSelf.peripheralManager.updateValue(
+                heartRateData,
+                for: weakSelf.heartRateCharacteristic,
+                onSubscribedCentrals: nil)
+            
+            DispatchQueue.main.async {
+                weakSelf.heartRate = heartRate
+                
+            }
+        }
+    }
     
     func isAdvertising() -> Bool
     {
@@ -77,22 +116,22 @@ class BluetoothManager: NSObject, CBPeripheralManagerDelegate
             
         case .unknown:
             print("BLE is unknown")
-
+            
         case .resetting:
             print("BLE is resetting")
-
+            
         case .unsupported:
             print("BLE is unsupported")
-
+            
         case .unauthorized:
             print("BLE is unauthorized")
-
+            
         case .poweredOff:
             print("BLE is poweredOff")
-
+            
         @unknown default:
             print("BLE is @unknown default")
-
+            
         }
     }
     
@@ -119,11 +158,15 @@ class BluetoothManager: NSObject, CBPeripheralManagerDelegate
     
     func peripheralManager(_ peripheral: CBPeripheralManager, central: CBCentral, didSubscribeTo characteristic: CBCharacteristic) {
         stopAdvertising()
+        NotificationCenter.default.post(name: .didSomeoneSubscribe, object: true)
+        
         print("Yes! Someone subscribed to BLE! with service: \(characteristic.service)")
     }
     
     func peripheralManager(_ peripheral: CBPeripheralManager, central: CBCentral, didUnsubscribeFrom characteristic: CBCharacteristic) {
         startAdvertising()
+        NotificationCenter.default.post(name: .didSomeoneSubscribe, object: false)
+        
         print("No device connected")
     }
     
@@ -132,4 +175,8 @@ class BluetoothManager: NSObject, CBPeripheralManagerDelegate
 
 extension Notification.Name{
     static let didUpdatePeripheralState = Notification.Name("didUpdatePeripheralState")
+    static let isWatchAppInstalled = Notification.Name("isWatchAppInstalled")
+    static let didSomeoneSubscribe = Notification.Name("didSomeoneSubscribe")
+    static let isWatchAppPaired = Notification.Name("isWatchAppPaired")
+    
 }

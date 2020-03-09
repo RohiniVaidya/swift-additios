@@ -22,10 +22,10 @@ extension UIViewController{
         }))
         self.present(alert, animated: true)
     }
+    
 }
 
-
-@IBDesignable extension UIButton {
+@IBDesignable extension UIView {
 
     @IBInspectable var borderWidth: CGFloat {
         set {
